@@ -5,27 +5,36 @@ using UnityEngine;
 public class PlayerMove : MonoBehaviour
 {
 	public CharacterController controller;
+	public GameObject bullet;
 	public float sensitivity = 100;
 	public float gravity = -9.81f;
 	public float groundRadius = 1;
+	public float jumpSpeed = 10;
 	public Transform groundCheck;
 	public LayerMask groundMask;
 	private Vector3 velocity;
 	private bool isGrounded;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     // Update is called once per frame
     void Update()
     {
+		if (Input.GetMouseButtonDown(0))
+		{
+			Rigidbody rigidbody = GameObject.Instantiate(bullet).GetComponent<Rigidbody>();
+			rigidbody.transform.position = transform.position + transform.forward;
+			rigidbody.velocity = transform.forward * 50f;
+		}
+
 		isGrounded = Physics.CheckSphere(groundCheck.position, groundRadius, groundMask);
 		if (isGrounded)
 		{
-			velocity.y = 0;
+			if (Input.GetKeyDown(KeyCode.Space))
+			{
+				velocity.y = jumpSpeed;
+			} else
+			{
+				velocity.y = 0;
+			}
 		}
 		else velocity.y += gravity * Time.deltaTime; 
 

@@ -169,9 +169,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 131744965}
+  bullet: {fileID: 3597454067421583104, guid: f7e42e9cf8b3e1a42846855a38aefeb2, type: 3}
   sensitivity: 10
   gravity: -9.81
   groundRadius: 0.25
+  jumpSpeed: 10
   groundCheck: {fileID: 1754096442}
   groundMask:
     serializedVersion: 2
@@ -338,7 +340,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60
+  field of view: 90
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
